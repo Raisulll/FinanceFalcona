@@ -272,7 +272,7 @@
           const username = document.getElementById("username").value;
           const password = document.getElementById("password").value;
 
-          const response = await fetch("http://localhost:5000/user", {
+          const response = await fetch("https://financefalcona.onrender.com/user", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -299,7 +299,7 @@
 
       async function fetchSubscriptionsData() {
         try {
-          const response = await fetch("http://localhost:5000/subscriptions");
+          const response = await fetch("https://financefalcona.onrender.com/subscriptions");
           const data = await response.json();
 
           const subscriptionTableBody =
@@ -341,7 +341,7 @@
 
       async function fetchData() {
         try {
-          const response = await fetch("http://localhost:5000/api/data");
+          const response = await fetch("https://financefalcona.onrender.com/api/data");
           const data = await response.json();
 
           const contactData = data.contactData.filter(
@@ -471,7 +471,7 @@
       async function toggleStatus(id) {
         try {
           const response = await fetch(
-            `http://localhost:5000/toggle-status/${id}`,
+            `https://financefalcona.onrender.com/toggle-status/${id}`,
             {
               method: "POST",
               headers: {
@@ -548,7 +548,7 @@
         const newPassword = event.target.newPassword.value;
         try {
           const response = await fetch(
-            "http://localhost:5000/api/update-password",
+            "https://financefalcona.onrender.com/api/update-password",
             {
               method: "PUT",
               headers: {
@@ -576,7 +576,7 @@
         const password = event.target.password.value;
         const role = event.target.role.value.toLowerCase();
         try {
-          const response = await fetch("http://localhost:5000/api/user", {
+          const response = await fetch("https://financefalcona.onrender.com/api/user", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

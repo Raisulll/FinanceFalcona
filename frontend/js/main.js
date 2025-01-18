@@ -154,7 +154,7 @@ $(function () {
         const data = Object.fromEntries(formData.entries());
 
         // Example: Send form data via AJAX (you can modify it based on your back-end)
-        fetch("http://localhost:5000/api/contact-us", {
+        fetch("https://financefalcona.onrender.com/api/contact-us", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(data),
@@ -186,7 +186,7 @@ $(function () {
         const data = Object.fromEntries(formData.entries());
 
         // Example: Send form data via AJAX (you can modify it based on your back-end)
-        fetch("http://localhost:5000/api/careers", {
+        fetch("https://financefalcona.onrender.com/api/careers", {
           method: "POST",
           body: formData,
         })
@@ -209,41 +209,41 @@ $(function () {
     const form = document.querySelector(".mil-subscribe-form");
 
     if (form) {
-        form.onsubmit = async function (event) {
-            event.preventDefault();
+      form.onsubmit = async function (event) {
+        event.preventDefault();
 
-            const email = form.querySelector('input[type="text"]').value;
+        const email = form.querySelector('input[type="text"]').value;
 
-            if (email) {
-                try {
-                    const response = await fetch(
-                      "http://localhost:5000/api/subscribe",
-                      {
-                        method: "POST",
-                        headers: {
-                          "Content-Type": "application/json",
-                        },
-                        body: JSON.stringify({ email }),
-                      }
-                    );
+        if (email) {
+          try {
+            const response = await fetch(
+              "https://financefalcona.onrender.com/api/subscribe",
+              {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ email }),
+              }
+            );
 
-                    if (response.ok) {
-                        alert("Thanks for subscribing!");
-                        form.reset();
-                    } else {
-                        const errorMessage = await response.text(); // Get server's error response if any
-                        alert(`Something went wrong: ${errorMessage}`);
-                    }
-                } catch (error) {
-                    console.error("Error:", error);
-                    alert("Network error! Please try again later.");
-                }
+            if (response.ok) {
+              alert("Thanks for subscribing!");
+              form.reset();
             } else {
-                alert("Please enter a valid email address.");
+              const errorMessage = await response.text(); // Get server's error response if any
+              alert(`Something went wrong: ${errorMessage}`);
             }
-        };
+          } catch (error) {
+            console.error("Error:", error);
+            alert("Network error! Please try again later.");
+          }
+        } else {
+          alert("Please enter a valid email address.");
+        }
+      };
     }
-});
+  });
 
 
   // Trigger the event when the page is first loaded, if Swup is not in play
