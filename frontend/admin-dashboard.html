@@ -200,7 +200,6 @@
                 <th>Phone</th>
                 <th>Message</th>
                 <th>Status</th>
-                <th>Action</th>
                 <button
                   onclick="copyTable('contact')"
                   class="p-1 m-1 btn btn-outline-dark"
@@ -225,7 +224,6 @@
                 <th>Appointment Date</th>
                 <th>Message</th>
                 <th>Status</th>
-                <th>Action</th>
                 <button
                   onclick="copyTable('appointment')"
                   class="p-1 m-1 btn btn-outline-dark"
@@ -411,14 +409,6 @@
                         ${item.status}
                     </button>
                 </td>
-                <td>
-                  <button 
-                  style="border-radius: 4px; border: none; color: white; background-color: red"
-                    onclick="deleteSubscription('${item._id}')"
-                  >
-                    Delete
-                  </button>
-                </td>
             </tr>
             `
               )
@@ -460,12 +450,6 @@
                         onclick="toggleStatus('${item?._id}')">
                         ${item.status}
                     </button>
-                </td>
-                <td>
-                  <button
-                    style="border-radius: 4px; border: none; color: white; background-color: red"
-                    onclick="deleteAppointment('${item._id}')"
-                    >Delete</button>
                 </td>
             </tr>
             `
