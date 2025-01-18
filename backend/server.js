@@ -292,6 +292,42 @@ const run = async () => {
       }
     });
 
+    app.delete("/deleteSubscriptions/:id", async (req, res) => {
+      const { id } = req.params;
+      try {
+        const objectId = new ObjectId(id);
+        const result = await subscriptionsCollection.deleteOne({
+          _id: objectId,
+        });
+        if (result.deletedCount === 1) {
+          res
+            .status(200)
+            .send({ message: "Subscription deleted successfully" });
+        } else {
+          res.status(404).send({ message: "Subscription not found" });
+        }
+      } catch (error) {
+        console.error("Error deleting subscription:", error);
+        res.status(500).send({ message: "Server error", error: error.message });
+      }
+    });
+
+    app.delete("/deleteCareer/:id", async (req, res) => {
+      const { id } = req.params;
+      try {
+        const objectId = new ObjectId(id);
+        const result = await careersCollection.deleteOne({ _id: objectId });
+        if (result.deletedCount === 1) {
+          res.status(200).send({ message: "Career deleted successfully" });
+        } else {
+          res.status(404).send({ message: "Career not found" });
+        }
+      } catch (error) {
+        console.error("Error deleting career:", error);
+        res.status(500).send({ message: "Server error", error: error.message });
+      }
+    });
+
     console.log("Successfully connected to MongoDB!");
   } catch (error) {
     console.error("Error connecting to MongoDB:", error);
